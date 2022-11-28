@@ -1,9 +1,9 @@
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthModule} from './auth/auth.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import {SharedModule} from './shared/shared.module';
@@ -16,11 +16,14 @@ import {BoardModule} from './board/board.module';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {ChatModule} from "./chat/chat.module";
+import {StompService} from 'ng2-stomp-service';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -35,9 +38,10 @@ import {ChatModule} from "./chat/chat.module";
     SidebarModule,
     BoardModule,
     HttpClientXsrfModule,
-    ChatModule
+    ChatModule,
+    FormsModule
   ],
-  providers: [MessageService, {provide: LOCALE_ID, useValue: 'fr'}],
+  providers: [MessageService, {provide: LOCALE_ID, useValue: 'fr'}, StompService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

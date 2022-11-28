@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Set;
 
 import static com.dynonuggets.refonteimplicaction.utils.ApiUrls.*;
 
@@ -28,7 +29,24 @@ public class UserController {
     private final AuthService authService;
     private final GroupService groupService;
 
+    @GetMapping("/registration/{userName}")
+    public ResponseEntity<Void> register(@PathVariable String userName) {
+        System.out.println("handlign user request" + userName);
+        try {
+            //UserStorage.getInstance().setUsers(userName);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/fetchAllUsers")
+    public Set<String> fetchAll() {
+        return null; //UserStorage.getInstance().getUsers();
+    }
+
     @GetMapping
+
     public ResponseEntity<Page<UserDto>> getAll(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "rows", defaultValue = "10") int rows
@@ -114,5 +132,4 @@ public class UserController {
         final List<GroupDto> groupsDto = userService.getUserGroups(userId);
         return ResponseEntity.ok(groupsDto);
     }
-
 }
