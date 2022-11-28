@@ -51,4 +51,3 @@ cloud:
       auto: false
     s3:
       region: ${AWS_REGION}
-

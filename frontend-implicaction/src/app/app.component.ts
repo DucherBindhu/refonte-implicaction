@@ -54,4 +54,3 @@ export class AppComponent {
     this.greetings.push(message);
   }
 }
-
