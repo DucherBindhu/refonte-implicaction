@@ -10,7 +10,7 @@ import {AvatarModule} from 'primeng/avatar';
 import {JobCardComponent} from './components/job-card/job-card.component';
 import {JobListComponent} from './components/job-list/job-list.component';
 import {SharedModule} from '../shared/shared.module';
-import {ChatPageComponent} from "../chat-page/chat-page.component";
+import {ChatPageModule} from "../chat-page/chat-page.module";
 
 
 @NgModule({
@@ -20,15 +20,15 @@ import {ChatPageComponent} from "../chat-page/chat-page.component";
     PostCardComponent,
     PostListComponent,
     JobCardComponent,
-    JobListComponent,
-    ChatPageComponent
+    JobListComponent
   ],
   imports: [
     CommonModule,
     FeatherModule,
     HomeRoutingModule,
     AvatarModule,
-    SharedModule
+    SharedModule,
+    ChatPageModule
   ],
   exports: [
     PostListComponent
