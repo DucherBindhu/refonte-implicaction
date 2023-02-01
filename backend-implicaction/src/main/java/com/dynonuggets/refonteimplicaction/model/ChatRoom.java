@@ -38,6 +38,7 @@ public class ChatRoom {
     @ManyToMany(fetch = FetchType.LAZY, cascade = ALL, mappedBy = "chatRooms")
     private List<User> users;
 
-    /*@ManyToMany(fetch = FetchType.LAZY, cascade = ALL, mappedBy = "chatRooms")
+    /*Ajouter lors de l'implémentation des groupes
+    @ManyToMany(fetch = FetchType.LAZY, cascade = ALL, mappedBy = "chatRooms")
     private List<Group> groups;*/
 }
